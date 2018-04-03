@@ -1,5 +1,10 @@
 package pl.dominisz;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  * Exercise from
  * https://docs.oracle.com/javase/tutorial/collections/streams/QandE/questions.html
@@ -10,11 +15,15 @@ package pl.dominisz;
  */
 public class ExerciseTwo {
 
+    private static Album[] albums;
+
     public static void main(String[] args) {
+        Album[] albums;
         List<Album> favs = new ArrayList<>();
+
         for (Album a : albums) {
             boolean hasFavorite = false;
-            for (Track t : a.tracks) {
+            for (Track t : a.getTracks()) {
                 if (t.rating >= 4) {
                     hasFavorite = true;
                     break;
@@ -25,7 +34,7 @@ public class ExerciseTwo {
         }
         Collections.sort(favs, new Comparator<Album>() {
             public int compare(Album a1, Album a2) {
-                return a1.name.compareTo(a2.name);
+                return a1.getName().compareTo(a2.getName());
             }
         });
     }
